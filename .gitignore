@@ -1,1 +1,16 @@
+## User settings
+xcuserdata/
+
+## XCode standards
+*.xcodeproj/*
+!*.xcodeproj/project.pbxproj
+!*.xcodeproj/xcshareddata/
+!*.xcodeproj/project.xcworkspace/
+!*.xcworkspace/contents.xcworkspacedata
+/*.gcno
+**/xcshareddata/WorkspaceSettings.xcsettings
+
+## MacOS
 .DS_Store
+
+## Custom things here
