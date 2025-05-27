@@ -72,13 +72,17 @@ jobs:
           # path: ${{ runner.temp }}/build
           retention-days: 3
 
-      - name: Upload app to TestFlight using xcrun
+      - name: Write API private key to file
+        run: |
+          echo "${{ secrets.APPSTORE_API_PRIVATE_KEY }}" > "$RUNNER_TEMP/AuthKey.p8"
+
+      - name: Upload to TestFlight using altool
         run: |
           xcrun altool --upload-app \
             --type ios \
             --file "${{ runner.temp }}/build/action-tester.ipa" \
-            --apiKey "${{ vars.APPSTORE_API_KEY_ID }}" \
-            --apiIssuer "${{ vars.APPSTORE_ISSUER_ID }}"
+            --apiKey "${{ secrets.APPSTORE_API_KEY_ID }}" \
+            --apiIssuer "${{ secrets.APPSTORE_ISSUER_ID }}"
 
       - name: Clean up keychain and provisioning profile
         if: ${{ always() }}
