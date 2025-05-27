@@ -74,7 +74,8 @@ jobs:
 
       - name: Write API private key to file
         run: |
-          echo "${{ secrets.APPSTORE_API_PRIVATE_KEY }}" > "$RUNNER_TEMP/AuthKey.p8"
+          mkdir -p $HOME/.appstoreconnect/private_keys
+          echo "${{ secrets.APPSTORE_API_PRIVATE_KEY }}" > "$HOME/.appstoreconnect/private_keys/AuthKey_${{ secrets.APPSTORE_API_KEY_ID }}.p8"
 
       - name: Upload to TestFlight using altool
         run: |
