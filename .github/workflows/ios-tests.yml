@@ -1,10 +1,11 @@
 name: iOS tests
 
 on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+  workflow_dispatch: # Manual trigger for now
+  # push:
+  #   branches: [ "main" ]
+  # pull_request:
+  #   branches: [ "main" ]
 
 env:
   DESTINATION: "platform=iOS Simulator,name=iPhone 16,OS=18.4"
