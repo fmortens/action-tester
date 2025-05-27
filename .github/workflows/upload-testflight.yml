@@ -1,5 +1,7 @@
-name: Testflight
-on: workflow_dispatch: # Manual trigger for now
+name: upload testflight
+
+on:
+  workflow_dispatch: # Manual trigger for now
 
 jobs:
   build_with_signing:
