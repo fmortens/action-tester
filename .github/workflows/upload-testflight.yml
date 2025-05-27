@@ -1,5 +1,5 @@
-name: App build
-on: push
+name: Testflight
+on: workflow_dispatch: # Manual trigger for now
 
 jobs:
   build_with_signing:
