@@ -72,13 +72,13 @@ jobs:
           # path: ${{ runner.temp }}/build
           retention-days: 3
 
-      - name: Upload app to TestFlight
-        uses: apple-actions/upload-testflight-build@v3
-        with:
-          app-path: ${{ runner.temp }}/build/action-tester.ipa
-          issuer-id: ${{ vars.APPSTORE_ISSUER_ID }}
-          api-key-id: ${{ vars.APPSTORE_API_KEY_ID }}
-          api-private-key: ${{ secrets.APPSTORE_API_PRIVATE_KEY }}
+      - name: Upload app to TestFlight using xcrun
+        run: |
+          xcrun altool --upload-app \
+            --type ios \
+            --file "${{ runner.temp }}/build/action-tester.ipa" \
+            --apiKey "${{ vars.APPSTORE_API_KEY_ID }}" \
+            --apiIssuer "${{ vars.APPSTORE_ISSUER_ID }}"
 
       - name: Clean up keychain and provisioning profile
         if: ${{ always() }}
