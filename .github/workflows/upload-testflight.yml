@@ -73,7 +73,7 @@ jobs:
           retention-days: 3
 
       - name: Upload app to TestFlight
-        uses: apple-actions/upload-testflight-build@v4
+        uses: apple-actions/upload-testflight-build@v3
         with:
           app-path: ${{ runner.temp }}/build/action-tester.ipa
           issuer-id: ${{ vars.APPSTORE_ISSUER_ID }}
