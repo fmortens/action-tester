@@ -25,10 +25,13 @@ jobs:
         run: |
           export DESTINATION="$DESTINATION"
 
-      - name: Build for testing
+      - name: Run tests
         run: |
-          xcodebuild build-for-testing -scheme "action-tester" -destination "$DESTINATION"
+          xcodebuild test -scheme "action-tester" -destination "$DESTINATION" -resultBundlePath Action-Tester.xcresult 
 
-      - name: Test without building
-        run: |
-          xcodebuild test-without-building -scheme "action-tester" -destination "$DESTINATION"
+      - name: Upload test results
+        uses: actions/upload-artifact@v4
+        if: ${{ failure() }}
+        with:
+          name: Action-Tester-${{ github.run_number }}.xcresult
+          path: Action-Tester.xcresult
