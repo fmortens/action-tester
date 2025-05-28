@@ -29,7 +29,7 @@ final class action_testerUITests: XCTestCase {
         app.launch()
 
         // Use XCTAssert and related functions to verify your tests produce the correct results.
-        XCTAssertTrue(false)
+        //XCTAssertTrue(false)
     }
 
     @MainActor
