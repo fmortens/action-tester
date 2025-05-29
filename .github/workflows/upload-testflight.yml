@@ -48,7 +48,7 @@ jobs:
       
       - name: Build app
         run: |
-          xcodebuild -scheme "action-tester" \
+          xcodebuild -scheme "PROD" \
           -archivePath $RUNNER_TEMP/action-tester.xcarchive \
           -sdk iphoneos \
           -configuration Debug \
